@@ -38,7 +38,7 @@ class FormDriver extends Component {
                             <span style={{ color: 'white', fontWeight: 'bold' }}></span><h1>Una App pensada en los Taxistas</h1>
                             <p>Registra un par de datos personales y contraseña</p>
                             <p>Se dueño de tu tiempo ¡No esperes mas!</p>
-                            <a href="#" onClick={() => this.props.enventPress}>¿Ya tienes una cuenta?</a>
+                            <a href="#" onClick={this.props.enventPress}>¿Ya tienes una cuenta?</a>
                         </Col>
                         <Col md={6}>
                             <Card text="info">

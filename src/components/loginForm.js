@@ -38,7 +38,7 @@ class LoginForm extends React.Component {
                     </Form>
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="secondary" onClick={this.props.press}>
+              <Button variant="secondary" onClick={this.props.secondPress}>
                 Salir
               </Button>
               <Button variant="primary" onClick={this.props.secondPress}>
