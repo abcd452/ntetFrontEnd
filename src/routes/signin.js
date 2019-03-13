@@ -1,15 +1,8 @@
 import React, { Component } from 'react'
 import '../App.css';
 import Footer from '../components/footer'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
-import Tooltip from 'react-bootstrap/Tooltip'
-
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 //componente: Formulario de usuario y conductor
 import FormUser from '../components/formUser'
 import FormDriver from '../components/FormDriver'
@@ -46,17 +39,23 @@ class Signin extends Component {
     customForm(role) {
         if (role === 'Usuario') {
             return (
-                <FormUser enventPress={this.props.enventOnPress}/>
+                <FormUser/>
             );
         }else{
             return(
-                <FormDriver enventPress={this.props.enventOnPress}/>
+                <FormDriver/>
             );
         }
     }
 
 
 
-}    
+}
 
-export default Signin;
+
+const mapStateToProps = state => ({
+    ...state,
+    authenticated: state.authenticated
+});
+
+export default withRouter(connect(mapStateToProps)(Signin));

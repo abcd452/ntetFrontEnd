@@ -15,6 +15,7 @@
   margin: 0 15px;
   transition: all 0.4s;
 }
+
 .App-NavbarBlack li:active{
   background-color: white !important;
 }
@@ -89,6 +90,8 @@
 	padding-bottom: 50px;
 	padding-top: 50px;
 }
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -96,4 +99,5 @@
   to {
     transform: rotate(360deg);
   }
+  
 }
