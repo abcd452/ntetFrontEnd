@@ -2,7 +2,7 @@ import {type as logIn} from '../actions/isAuthenticated'
 import {type as logOut} from '../actions/isLogOut'
 
 
-const user = localStorage.getItem('userInfo');
+const user = JSON.parse(localStorage.getItem('userInfo'));
 
 const defaultState = user? {loggedIn: true, user} : {};
 
@@ -15,7 +15,7 @@ function reducer(state = defaultState, {type, payload}){
         
         return {
             loggedIn: true,
-            payload
+            user: payload
         };
 
         case logOut:

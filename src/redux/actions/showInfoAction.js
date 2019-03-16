@@ -1,24 +1,24 @@
-import axios from 'axios'
 export const type = 'showInfoAction';
 
-const showInfoAction = (numcel) => {
-    axios.get(`profile?id=${numcel}`,
-    {
-        token: localStorage.getItem(userInfo).token
-    }).then((res) => {
-        return({
+const showInfoAction = (flag,res) => {
+    if(flag){
+        return( 
+        {
             type,
             payload: {
+                flag,
                 res
-            }    
-        });
-    }).catch((err) => {
-        console.log(err);
-        return({
+                     }
+        }); 
+    }else{
+        return {
             type,
-            payload: {}
-        });
-    });
+            payload: {
+                flag,
+                res: {}    
+            }    
+        }    
+    }
 };
 
 export default showInfoAction; 

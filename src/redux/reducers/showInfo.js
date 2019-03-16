@@ -1,17 +1,22 @@
 import {type as showInfoAction} from '../actions/showInfoAction'
-const defaultState = false;
+const defaultState = {show: false, data: {}};
 
 function reducer(state = defaultState, {type, payload}){
     switch(type){
         case showInfoAction:
         
-        if(!payload){
-            return {};    
+        if(payload.flag){
+            
+            return({
+                show:true,
+                data: payload.res    
+            });
         }
         
-        console.log(payload.data);
-        
-        return payload;
+        return {
+            show:false,
+            data: {}
+        }
 
         default: 
             return state;

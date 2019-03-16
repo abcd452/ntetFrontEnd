@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-
+import ProfileUser from '../components/profileUser'
 
 class Profile extends Component {
 
@@ -14,7 +14,7 @@ class Profile extends Component {
   }
 
   render() {   
-  return(<h1>HOLA MUNDO</h1>)
+    return(<ProfileUser></ProfileUser>);
   }
 }
 
