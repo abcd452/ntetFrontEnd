@@ -27,7 +27,6 @@ class NavbarBlack extends Component {
         this.closeForm = this.closeForm.bind(this);
         this.logOut = this.logOut.bind(this);
         this.showInfo = this.showInfo.bind(this);
-        console.log(this.props.logged);
     }
 
     showInfo(){

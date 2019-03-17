@@ -48,33 +48,36 @@ class myInfo extends React.Component {
                       </Col>
                       <Col md={6}>
                         <Form.Group as={Row}>
-                          <Form.Label column sm="3">{showInfo.data[0] ? `Usuario ${showInfo.data[0].nombre_completo}`: "Usuario: ERROR"}</Form.Label>
+                          <Form.Label column sm="3">Usuario:</Form.Label>
                           <Col sm="9">
+                          <Form.Label column sm="3">{showInfo.data[0] ? `${showInfo.data[0].nombre_completo}`: "ERROR"}</Form.Label>
                           </Col>
                         </Form.Group>
                         <Form.Group as={Row}>
-                          <Form.Label column sm="3">{showInfo.data[0] ? `Km recorridos: ${showInfo.data[0].distancia_total_viajada}`: "Km recorridos: ERROR"}</Form.Label>
+                          <Form.Label column sm="3">Km recorridos: </Form.Label>
                           <Col sm="9">
+                          <Form.Label column sm="3">{showInfo.data[0] ? `${showInfo.data[0].distancia_total_viajada}`: "ERROR"}</Form.Label>
                           </Col>
                         </Form.Group>
-
 
                         <Form.Group as={Row} controlId="formPlaintextEmail">
-                          <Form.Label column sm="3">Dirección</Form.Label>
+                          <Form.Label column sm="3">Teléfono: </Form.Label>
                           <Col sm="9">
-                            <Form.Control placeholder="direccion" />
+                            <Form.Label column sm="3">{showInfo.data[0] ? `${showInfo.data[0].numero_de_celular}`: "ERROR"}</Form.Label>
                           </Col>
                         </Form.Group>
-
-
-
                         <Form.Group as={Row} controlId="formPlaintextEmail">
-                          <Form.Label column sm="3">Teléfono</Form.Label>
+                          <Form.Label column sm="3">Numero de viajes: </Form.Label>
                           <Col sm="9">
-                            <Form.Control placeholder="Telefono" />
+                            <Form.Label column sm="3">{showInfo.data[0] ? `${showInfo.data[0].numero_de_viajes}`: "ERROR"}</Form.Label>
                           </Col>
                         </Form.Group>
-
+                        <Form.Group as={Row} controlId="formPlaintextEmail">
+                          <Form.Label column sm="3">Deuda</Form.Label>
+                          <Col sm="9">
+                            <Form.Label column sm="3">{showInfo.data[0] ? `${showInfo.data[0].deuda}`: "ERROR"}</Form.Label>
+                          </Col>
+                        </Form.Group>
                       </Col>
                       <Col md={3}>
 
@@ -85,7 +88,7 @@ class myInfo extends React.Component {
                             <i className="fas fa-trash-alt fa-4x"></i>
                             Eliminar cuenta</Button>
                           </ButtonGroup>
-
+                          
 
                       </Col>
                     </Row>

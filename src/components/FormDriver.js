@@ -71,7 +71,7 @@ class FormDriver extends Component {
                                         </Form.Row>
                                         <Form.Group controlId="formGridAddress2">
                                             <Form.Label>Cedúla de ciudadania</Form.Label>
-                                            <Form.Control type="password" placeholder="Ingrese su contraseña" />
+                                            <Form.Control type="password" placeholder="Ingrese su identificación"/>
                                         </Form.Group>
                                         <Form.Group controlId="formGridAddress2">
                                             <Form.Label>Contraseña</Form.Label>
