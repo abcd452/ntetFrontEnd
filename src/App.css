@@ -112,6 +112,10 @@
   line-height: 1.33;
 }
 
+.map-container {
+  height: 300px;
+  width: 100%;  
+}
 
 @keyframes App-logo-spin {
   from {

@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container'
 import MyInfo from './myInfo'
 import { connect } from 'react-redux'
 import Direcciones from './direcciones'
+import Mapa from './map'
 
 
 class profileUser extends Component {
@@ -16,14 +17,13 @@ class profileUser extends Component {
         
     }
 
-
     render() {
         return (
-            
             <header className="usuario_open">
                 <Container className="App-align-center">
                     <MyInfo></MyInfo>
-                    <button type="button" className="btn btn-default btn-circle btn-xl">PEDIR TAXI</button></Container>
+                    <Mapa></Mapa>
+                    </Container>
                     <Direcciones></Direcciones>
             </header>
 
