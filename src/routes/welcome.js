@@ -26,6 +26,7 @@ class Welcome extends Component {
   render() {
     return (
       <div>
+        
         <Main />
         <Servicios />
         <Register />

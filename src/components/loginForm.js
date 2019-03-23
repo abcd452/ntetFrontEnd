@@ -47,8 +47,6 @@ class LoginForm extends React.Component {
           num: this.state.numText,
           pass: this.state.passText
       }).then(res => {
-          console.log(res);
-          console.log(res.data);
           const {
             isAuthenticated,
             history, 

@@ -3,6 +3,8 @@ import '../App.css';
 import {Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
 import L from 'leaflet';
+import Select from 'react-select';
+import axios from 'axios'
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -19,13 +21,43 @@ class Mapa extends Component {
     this.state = {
       lat: 0,
       lng: 0,
-      zoom: 13
+      zoom: 13,
+      selectedOption: null,
+      options: [],
+      info: []
     }
     this.changePosition = this.changePosition.bind(this);
     this.showPosition = this.showPosition.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.inputChange = this.inputChange.bind(this);
     navigator.geolocation.getCurrentPosition(this.showPosition);
   }
 
+
+  inputChange(text){
+    axios.get(`http://nominatim.openstreetmap.org/search?format=json&limit=3&q=${text}`,{
+        }).then((res) => {
+                let info = [];
+                let showText = [];
+                res.data.forEach((element,index) => {
+                  info.push(element);
+                  showText.push({value:index, label: element.display_name});  
+                });
+                  this.setState({options: showText, info: info});
+                }).catch((err) => {
+                    console.log(err);
+                });  
+  }
+
+  
+  handleChange = (selectedOptionAux) => {
+    const {latitude, longitude} = {latitude: this.state.info[selectedOptionAux.value].lat,longitude: this.state.info[selectedOptionAux.value].lon}
+    this.setState({ 
+      lat: latitude,
+      lng: longitude,
+      zoom: 13,
+      selectedOption: selectedOptionAux});
+  }
 
     showPosition(positionCallBack){
         this.setState({
@@ -48,6 +80,7 @@ class Mapa extends Component {
   render() {
     const position = [this.state.lat, this.state.lng];
     return(
+        <div className="map-container">
         <LeafletMap ref={(ref) => this.map = ref} onclick={this.changePosition} style={{ height: "400px", width: "100hv" }} center={position} zoom={this.state.zoom}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -61,7 +94,15 @@ class Mapa extends Component {
             </div>    
           </Popup>
         </Marker>
-      </LeafletMap>);
+        </LeafletMap>
+        <Select
+          value={this.state.selectedOption}
+          onChange={this.handleChange}
+          options={this.state.options}
+          placeholder="Buscar dirección..."
+          onInputChange={this.inputChange}
+        />
+        </div>);
   }
 }
 
