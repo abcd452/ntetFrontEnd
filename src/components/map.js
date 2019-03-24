@@ -69,13 +69,32 @@ class Mapa extends Component {
 
     
   
-   changePosition(e){   
-    this.setState({
-        lat: e.latlng.lat,
-        lng: e.latlng.lng,
-        zoom: this.map.leafletElement.getZoom()
-    });  
-   }
+   changePosition(e) {
+        function distance(lat1, lon1, lat2, lon2) {
+            let radlat1 = Math.PI * lat1 / 180;
+            let radlat2 = Math.PI * lat2 / 180;
+            //let radlon1 = Math.PI * lon1 / 180;
+            //let radlon2 = Math.PI * lon2 / 180;
+            let theta = lon1 - lon2;
+            let radtheta = Math.PI * theta / 180;
+            let dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+            dist = Math.acos(dist);
+            dist = dist * 180 / Math.PI;
+            dist = dist * 60 * 1.1515;
+            dist = dist * 1.609344;
+            return dist
+        }
+
+        if (distance(this.state.lat, this.state.lng, e.latlng.lat, e.latlng.lng) < 0.5) { // 0.5 kilometros
+            this.setState({
+                lat: e.latlng.lat,
+                lng: e.latlng.lng,
+                zoom: this.map.leafletElement.getZoom()
+            });
+        } else {
+            console.log("Fuera de rango por " + (distance(this.state.lat, this.state.lng, e.latlng.lat, e.latlng.lng) - 0.5) + " km");
+        }
+    }
 
   render() {
     const position = [this.state.lat, this.state.lng];
